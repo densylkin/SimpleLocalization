@@ -8,13 +8,13 @@ namespace SimpleLocalization.Core
     public static class Constants
     {
         public static readonly Type[] SupportedTypes = 
-    {
-        typeof(string),
-        typeof(AudioClip),
-        typeof(Texture),
-        typeof(GameObject),
-        typeof(Sprite)
-    };
+        {
+            typeof(string),
+            typeof(AudioClip),
+            typeof(Texture),
+            typeof(GameObject),
+            typeof(Sprite)
+        };
 
         public static bool IsSupported(this Type type)
         {

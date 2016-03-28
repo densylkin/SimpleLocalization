@@ -47,18 +47,26 @@ namespace SimpleLocalization.Editor
 
         private void OnEnable()
         {
+            if(LocalizationManager.Instance == null)
+                return;
+
             _packages = LocalizationManager.Instance.GetPackagesNames();
             if (CurrentPkg != -1 && component.PackageExists)
                 if (component.DataExists)
                     GetKeys();
 
             Repaint();
-
         }
 
         public override void OnInspectorGUI()
         {
             Undo.RecordObject((Object)component, "localizedtext");
+
+            if (LocalizationManager.Instance == null)
+            {
+                GUILayout.Label("No localization manager found");
+                return;
+            }
 
             if (Application.isPlaying)
                 PlayModeUI();
