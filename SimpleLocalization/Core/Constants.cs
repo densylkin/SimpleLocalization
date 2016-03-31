@@ -13,7 +13,8 @@ namespace SimpleLocalization.Core
             typeof(AudioClip),
             typeof(Texture),
             typeof(GameObject),
-            typeof(Sprite)
+            typeof(Sprite),
+            typeof(Font)
         };
 
         public static bool IsSupported(this Type type)

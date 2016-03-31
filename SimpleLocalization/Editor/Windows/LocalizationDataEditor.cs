@@ -15,7 +15,6 @@ namespace SimpleLocalization.Editor
         private Vector2 scroll;
 
         private string _newKeyName = "";
-        private string _newKey = "";
 
         private GUIStyle _backgroudnStyle;
 

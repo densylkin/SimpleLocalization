@@ -115,6 +115,7 @@ namespace UnityHelpers.GUI
 
         public void DrawBody(GUIStyle backgroundStyle)
         {
+            DrawTabs();
             using (new VerticalBlock(backgroundStyle))
             {
                 var keys = _methods.Keys.ToArray();

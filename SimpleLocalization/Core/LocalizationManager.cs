@@ -22,6 +22,11 @@ namespace SimpleLocalization.Core
 
         public Dictionary<string, LocalizationPackage> Packages = new Dictionary<string, LocalizationPackage>();
 
+        public LocalizationPackage this[string key]
+        {
+            get { return Packages[key]; }
+        }
+
         public SystemLanguage DefaultLanguage
         {
             get { return AllLangauges[DefaultLanguageIndex]; }

@@ -12,8 +12,6 @@ namespace SimpleLocalization.Editor
     public class LocalizationManagerInspector : UnityEditor.Editor
     {
         private LocalizationManager Manager { get { return (LocalizationManager)target; } }
-
-        private string _searchStr = "";
         private Vector2 _scroll;
 
         private GUIStyle _dropBoxStyle;
@@ -31,9 +29,6 @@ namespace SimpleLocalization.Editor
             _dropBoxStyle.normal.textColor = Color.white;
 
             _pkgListBackground = ColorHelpers.MakeBackgroudnStyle(new Color(0.1f, 0.1f, 0.1f, 0.8f));
-
-           // if (Manager.Packages.Any())
-             //   Manager.GetLanguages();
         }
 
         public override void OnInspectorGUI()

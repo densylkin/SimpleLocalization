@@ -37,7 +37,7 @@ namespace SimpleLocalization.Editor
             _tabsMain = new TabsBlock(new Dictionary<string, Action>()
             {
                 {"Languages", LanguagesTab},
-                {"Datas", DatasTab}
+                {"Data", DatasTab}
             });
 
             _backgroundStyle = ColorHelpers.MakeBackgroudnStyle(new Color(0.1f, 0.1f, 0.1f, 0.5f));
@@ -68,8 +68,6 @@ namespace SimpleLocalization.Editor
                     if (GUILayout.Button("Edit", EditorStyles.toolbarButton))
                         _editPkgName = !_editPkgName;
             }
-
-            _tabsMain.DrawTabs();
             EditorGUILayout.Space();
             _tabsMain.DrawBody(_backgroundStyle);
         }

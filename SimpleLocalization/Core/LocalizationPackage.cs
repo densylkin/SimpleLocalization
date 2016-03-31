@@ -10,7 +10,7 @@ using UnityEditor;
 
 namespace SimpleLocalization.Core
 {
-    public class LocalizationPackage : BetterScriptableObject, ILocalizationPackage
+    public class LocalizationPackage : BetterScriptableObject
     {
         [Serialize]
         private readonly Dictionary<Type, ILocalizationData> _localizationDatas = new Dictionary<Type, ILocalizationData>();
