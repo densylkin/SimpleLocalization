@@ -15,7 +15,6 @@ namespace SimpleLocalization.Editor
         private SystemLanguage[] _languages;
         private SystemLanguage _newLang;
 
-        private TabsBlock _tabsMain;
         private bool _editPkgName;
 
         private GUIStyle _backgroundStyle;
@@ -33,22 +32,24 @@ namespace SimpleLocalization.Editor
         private void OnEnable()
         {
             RefreshLanguages();
-
-            _tabsMain = new TabsBlock(new Dictionary<string, Action>()
-            {
-                {"Languages", LanguagesTab},
-                {"Data", DatasTab}
-            });
-
             _backgroundStyle = ColorHelpers.MakeBackgroudnStyle(new Color(0.1f, 0.1f, 0.1f, 0.5f));
-
-            _tabsMain.SetCurrentMethod(0);
         }
 
         public override void OnInspectorGUI()
         {
             Undo.RecordObject(pkg, "localization Pkg");
             Toolbar();
+            using (new VerticalBlock(_backgroundStyle))
+            {
+                GUILayout.Label("Languages", EditorStyles.centeredGreyMiniLabel);
+                LanguagesList();
+                AddLanguage();
+            }
+            using (new VerticalBlock(_backgroundStyle))
+            {
+                GUILayout.Label("Data", EditorStyles.centeredGreyMiniLabel);
+                DataList();
+            }
             EditorUtility.SetDirty(pkg);
         }
 
@@ -69,16 +70,10 @@ namespace SimpleLocalization.Editor
                         _editPkgName = !_editPkgName;
             }
             EditorGUILayout.Space();
-            _tabsMain.DrawBody(_backgroundStyle);
         }
 
         #region LanguagesTab
 
-        private void LanguagesTab()
-        {
-            LanguagesList();
-            AddLanguage();
-        }
 
         private void LanguagesList()
         {
@@ -100,11 +95,11 @@ namespace SimpleLocalization.Editor
                 }
                 GUILayout.Space(3f);
             }
+
         }
 
         private void AddLanguage()
         {
-            EditorGUILayout.Space();
             using (new HorizontalBlock(EditorStyles.toolbar))
             {
                 _newLang = (SystemLanguage)EditorGUILayout.EnumPopup("New language", _newLang, EditorStyles.toolbarPopup, GUILayout.ExpandWidth(true));
@@ -120,11 +115,6 @@ namespace SimpleLocalization.Editor
         #endregion
 
         #region Data Editor Tab
-
-        private void DatasTab()
-        {
-            DataList();
-        }
 
         private void DataList()
         {
