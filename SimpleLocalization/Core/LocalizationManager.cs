@@ -187,5 +187,19 @@ namespace SimpleLocalization.Core
             var handler = LanguageChanged;
             if (handler != null) handler();
         }
+
+        #region GetLocalizedData
+
+        public static T GetLocalization<T>(string package, string key) where T : class 
+        {
+            return GetLocalization<T>(package, key, Instance.CurrentLanguage);
+        }
+
+        public static T GetLocalization<T>(string package, string key, SystemLanguage language) where T : class 
+        {
+            return (T)Instance.Packages[package].GetData<T>().GetTranslation(language, key);
+        }
+
+        #endregion
     } 
 }
