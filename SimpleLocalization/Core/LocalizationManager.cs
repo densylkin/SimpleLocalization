@@ -22,6 +22,11 @@ namespace SimpleLocalization.Core
 
         public Dictionary<string, LocalizationPackage> Packages = new Dictionary<string, LocalizationPackage>();
 
+        public static bool Exists
+        {
+            get { return Instance != null; }
+        }
+
         public LocalizationPackage this[string key]
         {
             get { return Packages[key]; }
@@ -69,11 +74,6 @@ namespace SimpleLocalization.Core
         }
 
         private void Awake()
-        {
-            
-        }
-
-        private void Start()
         {
             if (Packages.Count > 0)
                 RefreshLanguages();

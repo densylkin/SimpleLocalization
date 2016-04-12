@@ -70,7 +70,7 @@ namespace UnityHelpers
             if (!file.Exists)
                 return false;
 
-            file.Delete();
+            File.Delete(file.FullName);
             return true;
         }
     }

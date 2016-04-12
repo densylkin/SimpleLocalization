@@ -2,7 +2,7 @@
 using System.Collections;
 using SimpleLocalization.Core;
 
-public class LanguageSwitch : MonoBehaviour
+public class DemoLanguageSwitch : MonoBehaviour
 {
     private LocalizationManager _manager;
 
